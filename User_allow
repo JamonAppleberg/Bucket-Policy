@@ -1,0 +1,19 @@
+{
+  "Id": "1",
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "userallow",
+      "Action": [
+        "s3:*"
+      ],
+      "Effect": "Allow",
+      "Resource": ["arn:aws:s3:::<buketname>/*","arn:aws:s3:::bucketname"],
+      "Principal": {
+        "AWS": [
+          "arn:aws:iam:::User/S3 User ID"
+        ]
+      }
+    }
+  ]
+}
