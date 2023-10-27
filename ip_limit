@@ -1,0 +1,24 @@
+{
+  "Id": "SourceIP",
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "SourceIP",
+      "Action": "s3:*",
+      "Effect": "Deny",
+      "Resource": [
+        "arn:aws:s3:::<bucket_name>", //возможность просматривать свойства бакета с перечисленных ip, без возможности просматривать содержимое бакета 
+  "arn:aws:s3:::<bucket_name>/*" //возможность просматривать содержимое бакета с перечисленных ip, без возможности смотреть свойства самого бакета 
+      ],
+      "Condition": {
+        "NotIpAddress": {
+          "aws:SourceIp": [
+            "<ip_address>/<mask>",
+            "<ip_address>/<mask>"
+          ]
+        }
+      },
+      "Principal": "*"
+    }
+  ]
+}
